@@ -8,27 +8,27 @@
 </head>
 <body>
     <div class="container">
-        <h1>Tugas Array</h1>
+        <h1>Tugas Array Pertemuan 3</h1>
 
         <div class="task">
             <h2>1. Filter Angka dan Huruf</h2>
             <p><strong>Angka:</strong> [20, 10, 3, 30, 58, 42, 6, 9]</p>
             <p><strong>Huruf:</strong> ['z', 'a', 'c', 'g', 'p']</p>
-            <button onclick="task1()">Run Data 1</button>
+            <button onclick="task1()">Run Task 1</button>
             <div id="output1"></div>
         </div>
 
         <div class="task">
             <h2>2. Filter Angka Genap</h2>
             <p><strong>Angka:</strong> [1, 2, 3, 4, 5, 6, 7, 8, 9]</p>
-            <button onclick="task2()">Run Data 2</button>
+            <button onclick="task2()">Run Task 2</button>
             <div id="output2"></div>
         </div>
 
         <div class="task">
             <h2>3. Cek Angka Kelipatan 2</h2>
             <p><strong>Angka:</strong> [1, 2, 3, 4, 5, 6, 7, 8, 9]</p>
-            <button onclick="task3()">Run Data 3</button>
+            <button onclick="task3()">Run Task 3</button>
             <div id="output3"></div>
         </div>
     </div>
@@ -38,13 +38,12 @@
             const angka = [20, 10, 3, 30, 58, 42, 6, 9];
             const huruf = ['z', 'a', 'c', 'g', 'p'];
 
-            // Menyaring angka yang habis dibagi 3
-            const outputAngka = angka.filter(num => num % 3 === 0).sort((a, b) => a - b);
+            // Mengurutkan angka secara ascending
+            const outputAngka = angka.sort((a, b) => a - b);
 
             // Mengurutkan huruf secara alfabetis
             const outputHuruf = huruf.sort();
 
-            // Menggabungkan hasil angka dan huruf yang diurutkan
             document.getElementById("output1").innerHTML = `
                 <p><strong>Output Angka:</strong> [${outputAngka.join(", ")}]</p>
                 <p><strong>Output Huruf:</strong> [${outputHuruf.join(", ")}]</p>
