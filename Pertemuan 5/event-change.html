@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event on Change</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+</head>
+<body class="container my-5">
+    <div id="info" class="alert alert-info"></div>
+    <label for="buah" class="form-label">Pilih Buah</label>
+    <select name="buah" id="buah" class="form-select">
+        <option>Apel</option>
+        <option>Mangga</option>
+        <option>Jeruk</option>
+    </select>
+
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script>
+        const buah = document.getElementById('buah');
+        const info = document.getElementById('info');
+
+        buah.addEventListener('change', function(e) {
+            const selectedFruit = e.target.value;
+            info.innerText = 'Anda memilih: ' + selectedFruit;
+            Swal.fire(
+                'Terpilih!',
+                'Anda memilih buah: ' + selectedFruit,
+                'success'
+            );
+        });
+    </script>
+</body>
+</html>

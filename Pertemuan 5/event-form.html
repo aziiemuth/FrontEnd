@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Form Event</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+</head>
+<body class="container my-5">
+    <form action="" method="post" id="form-login">
+        <fieldset class="border p-4">
+            <legend class="w-auto px-2">Login</legend>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" class="form-control" placeholder="username" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="password" required />
+            </div>
+            <div id="feedback" class="mt-2"></div>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="reset" class="btn btn-secondary">Clear</button>
+            </div>
+        </fieldset>
+    </form>
+
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script>
+        const formLogin = document.getElementById('form-login');
+        const feedbackMessage = document.getElementById('feedback');
+
+        // Mendengarkan event submit pada form
+        formLogin.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Ambil nilai dari form
+            const data = new FormData(event.target);
+            const username = data.get('username');
+            const password = data.get('password');
+
+            // Validasi sederhana
+            if (username && password) {
+                feedbackMessage.innerHTML = `Login dengan username <code>${username}</code> berhasil!`;
+                Swal.fire(
+                    'Login Berhasil!',
+                    `Selamat datang, ${username}!`,
+                    'success'
+                );
+            } else {
+                feedbackMessage.innerHTML = `Mohon masukkan username dan password!`;
+                Swal.fire(
+                    'Oops!',
+                    'Mohon masukkan username dan password!',
+                    'error'
+                );
+            }
+        });
+
+        // Mendengarkan event reset pada form
+        formLogin.addEventListener('reset', function() {
+            feedbackMessage.textContent = 'Form dibersihkan!';
+            Swal.fire(
+                'Form Direset!',
+                'Semua input telah dibersihkan.',
+                'info'
+            );
+        });
+    </script>
+</body>
+</html>
