@@ -1,0 +1,64 @@
+.gradient-custom {
+    background: linear-gradient(to right, #ff8a00, #da1b60);
+}
+.fruit-card {
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+.fruit-card:hover {
+    transform: translateY(-5px);
+}
+.price-tag {
+    background: #ff8a00;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #da1b60;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+}
+.purchase-count {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+}
+.delete-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #dc3545;
+    cursor: pointer;
+}
+.delete-btn:hover {
+    color: #c82333;
+}
+.history-table {
+    max-height: 400px;
+    overflow-y: auto;
+}
+.history-table::-webkit-scrollbar {
+    width: 8px;
+}
+.history-table::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.history-table::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+.history-table::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
