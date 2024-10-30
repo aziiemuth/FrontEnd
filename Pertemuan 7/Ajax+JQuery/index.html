@@ -3,56 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajax+JQuery</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar Dasar JQuery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
-    <div class="container mt-5">
-        <div id="main" data-loading="true"></div>
-        <form>
-            <div class="form-group">
-                <label for="package">Pilih Paket</label>
-                <select class="form-control" name="package" id="package">
-                    <option data-price="100000" data-discount="10">Paket 1</option>
-                    <option data-price="150000" data-discount="10">Paket 2</option>
-                    <option data-price="200000" data-discount="10">Paket 3</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="price">Harga</label>
-                <input type="text" class="form-control" name="price" readonly />
-            </div>
-            <div class="form-group">
-                <label for="discount">Discount</label>
-                <input type="text" class="form-control" name="discount" readonly />
-            </div>
-            <h4>Total: <span id="total">0</span></h4>
-        </form>
-    </div>
+    <div id="main" data-loading="true"></div>
+    <form class="p-3 mt-5" style="width: 60%; margin: auto;">
+        <div class="mb-3">
+            <label for="package" class="form-label">Paket</label>
+            <select class="form-select" name="package" id="package">
+                <option data-price="100000" data-discount="10" data-tax="5">Paket 1</option>
+                <option data-price="150000" data-discount="10" data-tax="10">Paket 2</option>
+                <option data-price="200000" data-discount="10" data-tax="15">Paket 3</option>
+                <option data-price="250000" data-discount="10" data-tax="20">Paket 4</option>
+                <option data-price="300000" data-discount="10" data-tax="25">Paket 5</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Harga</label>
+            <input type="text" class="form-control" name="price" readonly />
+        </div>
+        <div class="mb-3">
+            <label for="discount" class="form-label">Discount</label>
+            <input type="text" class="form-control" name="discount" readonly />
+        </div>
+        <div class="mb-3">
+            <label for="tax" class="form-label">Pajak</label>
+            <input type="text" class="form-control" name="tax" readonly />
+        </div>
+        <h4>Total: <span id="total">0</span></h4>
+    </form>
 
     <script>
-        $('#package').on('change', function(){
-            // ambil data dari elemen option yang dipilih
-            const price = $('#package option:selected').data('price');
-            const discount = $('#package option:selected').data('discount');
-            
-            // kalkulasi total harga
-            const totalDiscount = (price * discount / 100);
-            const total = price - totalDiscount;
-            
-            // tampilkan data ke element
-            $('input[name=price]').val(price);
-            $('input[name=discount]').val(totalDiscount);
-            $('#total').text(`Rp ${total}`);
-            
-            // tampilkan sweetalert dengan informasi total harga
-            Swal.fire({
-                title: 'Total Harga',
-                text: `Rp ${total}`,
-                icon: 'info',
-                confirmButtonText: 'OK'
+        $(document).ready(function() {
+            $('#package').on('change', function() {
+                const price = $('#package option:selected').data('price');
+                const discount = $('#package option:selected').data('discount');
+                const taxPercent = $('#package option:selected').data('tax');
+
+                const totalDiscount = (price * discount / 100);
+                const tax = (price * taxPercent / 100);
+                const total = price - totalDiscount + tax;
+
+                $('input[name=price]').val(price);
+                $('input[name=discount]').val(totalDiscount);
+                $('input[name=tax]').val(taxPercent + '%');
+                $('#total').text(`Rp ${total}`);
             });
         });
     </script>
