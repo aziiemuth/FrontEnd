@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Buah</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    body {
+      background-color: #90EE90; 
+    }
+
+    .fruit-image {
+      width: 150px; 
+      height: 150px; 
+      object-fit: cover; 
+      border-radius: 10px; 
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .fruit-image:hover {
+      transform: scale(1.1);
+    }
+
+    .fruit-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .fruit-title {
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container my-5">
+    <div class="row text-center">
+      <div class="col-4 fruit-container">
+        <img src="gambar/nanas.jpg" class="img-fluid fruit-image" onclick="showFruitPopup('pineapple')">
+        <div class="fruit-title">Nanas</div>
+      </div>
+      <div class="col-4 fruit-container">
+        <img src="gambar/pisang.jpg" class="img-fluid fruit-image" onclick="showFruitPopup('bananas')">
+        <div class="fruit-title">Pisang</div>
+      </div>
+      <div class="col-4 fruit-container">
+        <img src="gambar/jambu.jpg" class="img-fluid fruit-image" onclick="showFruitPopup('guava')">
+        <div class="fruit-title">Jambu</div>
+      </div>
+      <div class="col-4 fruit-container mt-4">
+        <img src="gambar/apel.jpg" class="img-fluid fruit-image" onclick="showFruitPopup('apple')">
+        <div class="fruit-title">Apel</div>
+      </div>
+      <div class="col-4 fruit-container mt-4">
+        <img src="gambar/mangga.jpg" class="img-fluid fruit-image" onclick="showFruitPopup('mango')">
+        <div class="fruit-title">Mangga</div>
+      </div>
+      <div class="col-4 fruit-container mt-4">
+        <img src="gambar/semangka.jpg" class="img-fluid fruit-image" onclick="showFruitPopup('watermelon')">
+        <div class="fruit-title">Semangka</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.js"></script>
+  <script>
+    const fruits = {
+      pineapple: {
+        title: "Nanas",
+        description: "Buah nanas memiliki rasa yang manis dan segar. Kaya akan vitamin C dan serat.",
+        image: "gambar/nanas.jpg"
+      },
+      bananas: {
+        title: "Pisang",
+        description: "Pisang adalah buah yang kaya akan nutrisi dan serat. Rasanya manis dan teksturnya lembut.",
+        image: "gambar/pisang.jpg"
+      },
+      guava: {
+        title: "Jambu",
+        description: "Buah Jambu Biji (Guava) memiliki rasa yang manis dan sedikit asam. Kaya akan vitamin C dan serat.",
+        image: "gambar/jambu.jpg"
+      },
+      apple: {
+        title: "Apel",
+        description: "Buah apel memiliki rasa manis dan renyah. Mengandung banyak antioksidan dan vitamin.",
+        image: "gambar/apel.jpg"
+      },
+      mango: {
+        title: "Mangga",
+        description: "Buah mangga memiliki rasa yang manis dan sedikit asam. Sumber vitamin A dan C yang baik.",
+        image: "gambar/mangga.jpg"
+      },
+      watermelon: {
+        title: "Semangka",
+        description: "Buah semangka memiliki rasa yang manis dan menyegarkan. Kandungan airnya sangat tinggi.",
+        image: "gambar/semangka.jpg"
+      }
+    };
+
+    function showFruitPopup(fruit) {
+      Swal.fire({
+        title: fruits[fruit].title,
+        imageUrl: fruits[fruit].image,
+        imageWidth: 200,
+        imageHeight: 200,
+        imageAlt: fruits[fruit].title,
+        showCancelButton: true,
+        confirmButtonText: 'Lihat Deskripsi',
+        cancelButtonText: 'Tutup',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: 'Deskripsi Gambar',
+            text: fruits[fruit].description,
+            icon: 'info',
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>
